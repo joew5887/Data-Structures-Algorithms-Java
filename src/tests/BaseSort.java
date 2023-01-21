@@ -3,8 +3,8 @@ package tests;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-import main.arrays.Array;
-import main.arrays.InstrumentedArray;
+import main.linear.Array;
+import main.linear.InstrumentedArray;
 
 public abstract class BaseSort {
     public abstract Array sort(Array arr);

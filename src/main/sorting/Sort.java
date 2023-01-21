@@ -1,9 +1,17 @@
 package main.sorting;
 
 import java.util.ArrayList;
-import main.arrays.Array;
+
+import main.linear.Array;
 
 public class Sort {
+    /**
+     * What? Find the minimum element and put it in the correct position.
+     * Loop Invariant: Everything left of i is sorted.
+     * Complexity: big theta n^2.
+     * 
+     * @param a Array to sort.
+     **/
     public static void selection(Array a) {
         for (int i = 0; i < a.length(); i++) { // to a.length (n)
             int j = a.findMin(i); // n
@@ -11,6 +19,13 @@ public class Sort {
         }
     }
 
+    /**
+     * What? Insert each element in the correct position.
+     * Loop Invariant: Everything left of i is smaller.
+     * Complexity: worse = O(n^2), best = O(n)
+     * 
+     * @param a Array to sort.
+     **/
     public static int insertion(Array a) {
         int swaps = n_sort(a, 1, false);
 
@@ -23,6 +38,13 @@ public class Sort {
         return swaps;
     }
 
+    /**
+     * Shell sort of stride length 'step'.
+     * 
+     * @param a          Array to sort.
+     * @param step       Stride length.
+     * @param descending Sorts descending if true.
+     **/
     private static int n_sort(Array a, int step, boolean descending) {
         int swaps = 0;
 
@@ -46,6 +68,13 @@ public class Sort {
         return swaps;
     }
 
+    /**
+     * What? Insertion sort of varying stride lengths according to a gap sequence.
+     * Correctness: The last pass is an insertion sort.
+     * Complexity: For gap sequence 2^k - 1, it is theta(n^(3/2)).
+     * 
+     * @param a Array to sort.
+     **/
     public static int shell(Array a) {
         // gap sequence 2^k - 1
         ArrayList<Integer> gapSequence = getGapSequence(a);
@@ -75,6 +104,12 @@ public class Sort {
         return gapSequence;
     }
 
+    /**
+     * What? Recursively split list to sort
+     * Complexity: O(n log n) base 2.
+     * 
+     * @param a Array to sort.
+     */
     public static void mergesort(Array a) {
         int length = a.length();
 
@@ -98,6 +133,13 @@ public class Sort {
         }
     }
 
+    /**
+     * What? Partition an array so that all elements on the left of p are smaller
+     * than p).
+     * Complexity: Avg = theta(n log n), worst = O(n^2)
+     *
+     * @param a Array to sort.
+     **/
     public static void quicksort(Array a) {
         int left = 0;
         int right = a.length() - 1;

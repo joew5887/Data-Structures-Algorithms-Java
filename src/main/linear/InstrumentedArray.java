@@ -1,4 +1,4 @@
-package main.arrays;
+package main.linear;
 
 public class InstrumentedArray extends Array {
     private int count = 0;
